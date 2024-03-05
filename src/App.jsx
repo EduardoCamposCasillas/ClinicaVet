@@ -5,6 +5,7 @@ function App () {
   return (
     <div>
       <Navbar></Navbar>
+      <p>Chinga tu madre david</p>
     </div>
   )
 }
