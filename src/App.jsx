@@ -6,6 +6,7 @@ function App () {
     <div>
       <Navbar></Navbar>
       <p>Chinga tu madre david</p>
+      <p>Ramon la tuya</p>
     </div>
   )
 }
