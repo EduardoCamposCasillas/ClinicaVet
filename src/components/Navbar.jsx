@@ -34,7 +34,7 @@ const Navbar = () => {
       </div>
 
       {/* Menú desplegable para pantallas pequeñas */}
-      <ul className={`fixed left-0 top-0 w-[35%] h-full border-r-2 border-r-white bg-[#0d6efd] ease-in-out transition-transform duration-500 ${nav ? 'transform translate-x-0' : 'transform -translate-x-full'}`}>
+      <ul className={`fixed z-10 left-0 top-0 w-[35%] h-full border-r-2 border-r-white text-white bg-[#0d6efd] ease-in-out transition-transform duration-500 ${nav ? 'transform translate-x-0' : 'transform -translate-x-full'}`}>
         {/* Logo */}
         <div className="flex items-center justify-center my-4">
           <img src="images\logo.png" alt="Logo" className="h-16 w-auto" />

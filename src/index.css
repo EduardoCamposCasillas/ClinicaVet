@@ -13,5 +13,12 @@ body {
   /* Otras propiedades CSS si es necesario */
 }
 
+.bg-banner{
+  background-repeat: no-repeat;
+  background-size: cover; /* Ajusta el tamaño de la imagen */
+  background-position: center; /* Ajusta la posición de la imagen */
+  /* Otras propiedades CSS si es necesario */
+}
+
 
 
