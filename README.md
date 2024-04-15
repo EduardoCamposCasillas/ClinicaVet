@@ -35,3 +35,6 @@ A continuación anexo los pasos a seguir para poder contribuir a este repositori
 7. Desde GitHub crea un pull request desde la rama donde tienes tus cambios (boton "Compare & pull request")
 
 8. Espera la respuesta a tu pull request del dueño del repositorio al que estas contribuyendo
+
+## To Do List
+- Implementacion de el componente login con su respectivo formulario.

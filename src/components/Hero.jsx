@@ -9,7 +9,7 @@ const Hero = () => {
             SERVICIOS VETERINARIOS <span className="md:text-5xl sm:text-4xl text-3xl font-bold md:py-6">CIUDAD GUZMAN</span>
           </h1>
           <p className='md:text-2xl text-xl font-bold text-gray-200'>&ldquo;Donde el amor por los animales se encuentra con la excelencia en el cuidado veterinario.&rdquo;</p>
-          <button className='bg-[#0d6efd] w-[200px] rounded-md font-medium my-6 py-3 text-white hover:bg-sky-700'>CONÓZCANOS</button>
+          <button className='py-3 rounded-xl bg-[#0d6efd] text-white my-6 text-md w-[250px] font-medium active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all'>AGENDAR UNA CITA</button>
         </div>
       </div>
     </div>
