@@ -9,7 +9,7 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 
 function App() {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(null);
 
   if (token) {
     sessionStorage.setItem('token', JSON.stringify(token));

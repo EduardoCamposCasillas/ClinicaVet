@@ -18,23 +18,23 @@ const Login = ({ setToken }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const { user, error } = await supabase.auth.signInWithPassword(
-        formData.email,
-        formData.password
-      );
-
+      const { user, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
+  
       if (error) {
         throw error;
       }
       
-      // Aquí podrías almacenar el token o hacer cualquier otra lógica necesaria
       setToken(user); // Establecer el usuario como token por ahora, pero puedes ajustarlo según tu necesidad
     } catch (error) {
       alert(error.message);
     }
   }
+  
 
   // Función para cerrar sesión
   const handleSignOut = async () => {
