@@ -1,8 +1,9 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 const FormLogin = ({handleChange, handleSubmit}) => {
 
+  
   return (
     <div className='flex w-full h-screen'> 
     <div className='w-full flex items-center justify-center md:w-1/2'>
