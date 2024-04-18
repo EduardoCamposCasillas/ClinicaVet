@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../helpers/supabase';
+import { UserAuthContext } from '../context/UserAuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const Register = ({ setToken }) => {
+const Register = () => {
+  const navigate = useNavigate();
+  const {} = useContext(UserAuthContext);
   const [formData, setFormData] = useState({
     name: '',
     last_name: '',
     phone: '',
     email: '',
     password: '',
-    created_at: '', // Este campo probablemente no sea necesario en el formulario
-    updated_at: '' // Este campo probablemente no sea necesario en el formulario
   });
 
   const handleChange = (e) => {
@@ -22,21 +24,8 @@ const Register = ({ setToken }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { user, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        // Pasar los campos adicionales al momento de registrar
-        full_name: `${formData.name} ${formData.last_name}`,
-        phone: formData.phone
-      });
-      if (error) {
-        throw error;
-      }
-      setToken(user);
-    } catch (error) {
-      alert(error.message);
-    }
+    singUp(formData);
+    navigate("/login")
   };
 
   return (

@@ -1,9 +1,14 @@
 // Login.jsx
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { supabase } from "../helpers/supabase";
 import FormLogin from './FormLogin';
+import { useNavigate } from 'react-router-dom';
+import { UserAuthContext } from '../context/UserAuthContext';
 
-const Login = ({ setToken }) => {
+
+const Login = () => {
+  const navigate = useNavigate();
+  const {logIn} = useContext(UserAuthContext);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -16,60 +21,17 @@ const Login = ({ setToken }) => {
     }));
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
   
-    try {
-      const { user, error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password,
-      });
-  
-      if (error) {
-        throw error;
-      }
-      
-      setToken(user); // Establecer el usuario como token por ahora, pero puedes ajustarlo según tu necesidad
-    } catch (error) {
-      alert(error.message);
-    }
+  const handleSubmit = (e) => {
+    logIn(formData); 
+    navigate("/");
   }
-  
 
-  // Función para cerrar sesión
-  const handleSignOut = async () => {
-    try {
-      await supabase.auth.signOut();
-      setToken(null); // Limpiar el token
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  // Función para registrar un nuevo usuario
-  const handleSignUp = async () => {
-    try {
-      const { user, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (error) {
-        throw error;
-      }
-      
-      setToken(user); // Establecer el usuario como token después de registrarse
-    } catch (error) {
-      alert(error.message);
-    }
-  };
 
   return (
     <FormLogin 
       handleSubmit={handleSubmit} 
       handleChange={handleChange}
-      handleSignOut={handleSignOut}
-      handleSignUp={handleSignUp}
     />
   );
 };
