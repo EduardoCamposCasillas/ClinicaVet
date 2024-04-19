@@ -20,11 +20,14 @@ function UserAuthProvider({children}){
     
       email: formData.email,
       password: formData.password,
-    }); sessionStorage.setItem("token", data.session.access_token);
-        setToken(data.session.access_token);
+    });  if (error) {
+      console.error('Error de inicio de sesión:', error.message);
+  }     else {
+      sessionStorage.setItem("token", data.session.access_token);
+      setToken(data.session.access_token);
   }
-
- 
+      
+  }
   
   const singUp = async(formData)=> {
     const { user, error } = await supabase.auth.signUp({
