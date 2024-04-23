@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { supabase } from '../helpers/supabase';
+import { useNavigate } from 'react-router-dom';
 
 function CrearCita() {
   const [formData, setFormData] = useState({
@@ -49,7 +50,8 @@ function CrearCita() {
   };
 
   return (
-      <form onSubmit={handleSubmit}>
+    <div>    
+    <form onSubmit={handleSubmit}>
           {error && <div style={{ color: 'red' }}>{error}</div>}
           {success && <div style={{ color: 'green' }}>{success}</div>}
           <input type="text" name="pet_name" value={formData.pet_name} onChange={handleChange} placeholder="Nombre de la mascota" required />
@@ -61,6 +63,9 @@ function CrearCita() {
           <textarea name="problem_description" value={formData.problem_description} onChange={handleChange} placeholder="Descripción del problema" required />
           <button type="submit">Registrar Cita</button>
       </form>
+        
+      </div>
+  
   );
 }
 

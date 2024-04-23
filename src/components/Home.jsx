@@ -1,11 +1,10 @@
-// Home.jsx
 import Navbar from './Navbar';
 import Hero from './Hero';
 import { useNavigate } from 'react-router-dom'
 
-const Home = ({ token }) => {
+const Home = () => {
+
   let navigate = useNavigate();
-  
   function handleLogout() {
     navigate('/');
   }
@@ -14,8 +13,8 @@ const Home = ({ token }) => {
 
   return (
     <div>
-      <Navbar token={token} />
-      <Hero token={token} />
+      <Navbar/>
+      <Hero/>
       {/* Aquí puedes añadir el resto*/}
       <div>
         
