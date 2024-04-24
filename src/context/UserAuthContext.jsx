@@ -7,6 +7,7 @@ export const UserAuthContext = createContext(null);
 function UserAuthProvider({children}){
 
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState();
 
   useEffect(() => {
     checkUser().catch(error=>console.error(error));
@@ -26,12 +27,12 @@ function UserAuthProvider({children}){
         if (error) throw error;
 
         setUser({ ...session.data.session.user, role: userProfile.roles.name });
+        setToken(session.data.session.access_token)
       }
     
   }
 
 
-  const [token, setToken] = useState();
 
   useEffect(() => {
     const sessionToken = sessionStorage.getItem('token');
@@ -48,8 +49,14 @@ function UserAuthProvider({children}){
     });  if (error) {
       console.error('Error de inicio de sesión:', error.message);
   }     else {
+    const { data: userProfile, error } = await supabase
+    .from('users')
+    .select('roles(name)')
+    .eq('id', data.session.user.id)
+    .single()
       sessionStorage.setItem("token", data.session.access_token);
       setToken(data.session.access_token);
+      setUser({ ...data.session.user, role: userProfile.roles.name });
   }
       
   }
@@ -72,6 +79,7 @@ function UserAuthProvider({children}){
   const logOut = async() => {
     await supabase.auth.signOut();
     setToken(null); 
+    setUser(null);
     sessionStorage.removeItem('token');
   }
   

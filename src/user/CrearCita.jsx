@@ -3,6 +3,9 @@ import { supabase } from '../helpers/supabase';
 import { useNavigate } from 'react-router-dom';
 
 function CrearCita() {
+
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     pet_name: '',
     species: '',
