@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import {supabase} from '../helpers/supabase';
-import { error } from 'jquery';
+
 
 export const UserAuthContext = createContext(null);
 
